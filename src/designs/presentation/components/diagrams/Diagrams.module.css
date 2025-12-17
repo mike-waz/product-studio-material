@@ -1,0 +1,349 @@
+/* Diagram Styles */
+
+.diagramContainer {
+  width: 100%;
+  margin: var(--space-8) 0;
+  overflow-x: auto;
+}
+
+.diagram {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.diagramWide {
+  width: 100%;
+  max-width: 960px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  min-width: 680px;
+}
+
+/* Typography classes */
+.columnHeader {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text-tertiary);
+  text-anchor: middle;
+}
+
+.boxText {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text-primary);
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.boxTextSmall {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text-primary);
+  text-anchor: middle;
+}
+
+/* Box styles */
+.boxPrimary {
+  fill: var(--color-bg-elevated);
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.boxSecondary {
+  fill: var(--color-bg-card);
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+/* Connection lines */
+.connectionLine {
+  stroke: var(--color-text-tertiary);
+  stroke-width: 1;
+  fill: none;
+}
+
+.arrowHead {
+  fill: var(--color-text-tertiary);
+}
+
+/* Product Infrastructure Diagram styles */
+.diagramTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  fill: var(--color-text-primary);
+  text-anchor: middle;
+}
+
+.labelSmall {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-tertiary);
+  text-anchor: middle;
+}
+
+.systemTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  fill: var(--color-text-primary);
+  text-anchor: middle;
+}
+
+.tagline {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text-secondary);
+  text-anchor: middle;
+}
+
+.stackItem {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-secondary);
+  text-anchor: middle;
+}
+
+.stackItemMuted {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-tertiary);
+  text-anchor: middle;
+}
+
+.flowArrow {
+  stroke: var(--color-text-tertiary);
+  stroke-width: 1;
+  fill: none;
+}
+
+.arrowHeadFilled {
+  fill: var(--color-text-tertiary);
+}
+
+.documentIcon {
+  fill: var(--color-bg-elevated);
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.prdLabel {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text-tertiary);
+  text-anchor: middle;
+}
+
+.bottomTagline {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-secondary);
+  text-anchor: middle;
+}
+
+.emphasis {
+  font-weight: var(--font-weight-bold);
+  fill: var(--color-text-primary);
+}
+
+.detailsLink {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-accent);
+  text-anchor: middle;
+  transition: fill var(--transition-fast);
+}
+
+.detailsLink:hover {
+  fill: var(--color-accent-hover);
+}
+
+/* Workflow Architecture Diagram styles */
+.tldrTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  fill: var(--color-text-tertiary);
+}
+
+.tldrText {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-secondary);
+}
+
+.bulletText {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-secondary);
+}
+
+.phaseBox {
+  fill: var(--color-bg-elevated);
+  stroke: var(--color-border);
+  stroke-width: 1;
+}
+
+.phaseTitle {
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text-primary);
+  text-anchor: middle;
+}
+
+.phaseSubtitle {
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-tertiary);
+  text-anchor: middle;
+}
+
+.phaseSubtitleSmall {
+  font-family: var(--font-family);
+  font-size: 10px;
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-tertiary);
+  text-anchor: middle;
+}
+
+.qualityBox {
+  fill: var(--color-accent-subtle);
+  stroke: var(--color-accent);
+  stroke-width: 1;
+}
+
+.qualityText {
+  font-family: var(--font-family);
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-accent);
+  text-anchor: middle;
+}
+
+.prdBox {
+  fill: var(--color-bg-elevated);
+  stroke: var(--color-text-tertiary);
+  stroke-width: 1;
+}
+
+.prdBoxTitle {
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text-secondary);
+  text-anchor: middle;
+}
+
+.executionBox {
+  fill: var(--color-bg-secondary);
+  stroke: var(--color-accent);
+  stroke-width: 1;
+}
+
+.subAgentBox {
+  fill: var(--color-accent-subtle);
+  stroke: none;
+}
+
+.subAgentText {
+  font-family: var(--font-family);
+  font-size: 10px;
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-secondary);
+  text-anchor: middle;
+}
+
+.releaseBox {
+  fill: var(--color-bg-elevated);
+  stroke: #22c55e;
+  stroke-width: 1;
+}
+
+.learningBox {
+  fill: var(--color-bg-secondary);
+  stroke: var(--color-border);
+  stroke-width: 1;
+  stroke-dasharray: 4 2;
+}
+
+.learningTitle {
+  font-family: var(--font-family);
+  font-size: 12px;
+  font-weight: var(--font-weight-medium);
+  fill: var(--color-text-primary);
+  text-anchor: middle;
+}
+
+.learningItem {
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-secondary);
+  text-anchor: middle;
+}
+
+.learningItemMuted {
+  font-family: var(--font-family);
+  font-size: 10px;
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-tertiary);
+  text-anchor: middle;
+}
+
+.flowArrowMain {
+  stroke: var(--color-text-tertiary);
+  stroke-width: 1;
+  fill: none;
+}
+
+.loopArrow {
+  stroke: var(--color-accent);
+  stroke-width: 1;
+  stroke-dasharray: 6 3;
+  fill: none;
+  opacity: 0.5;
+}
+
+.arrowHeadLoop {
+  fill: var(--color-accent);
+  opacity: 0.5;
+}
+
+.timeLabel {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  fill: var(--color-accent);
+}
+
+.timeLabelSub {
+  font-family: var(--font-family);
+  font-size: 11px;
+  font-weight: var(--font-weight-regular);
+  fill: var(--color-text-tertiary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .diagramWide {
+    min-width: 600px;
+  }
+}

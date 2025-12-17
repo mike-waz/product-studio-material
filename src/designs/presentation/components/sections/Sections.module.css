@@ -1,0 +1,474 @@
+/* Shared Section Styles - Used across multiple sections */
+
+/* Subsection spacing */
+.subsection {
+  margin-top: var(--space-8);
+}
+
+.subsection:first-child {
+  margin-top: 0;
+}
+
+.subsection h3 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-2);
+}
+
+.subsection h4 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-1);
+}
+
+/* Insight callout - subtle, not accent colored */
+.insight {
+  background-color: var(--color-bg-elevated);
+  border-left: 2px solid var(--color-text-tertiary);
+  padding: var(--space-2) var(--space-3);
+  margin-top: var(--space-3);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.insight strong {
+  color: var(--color-text-primary);
+}
+
+/* Highlight box */
+.highlight {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--card-padding-md);
+  margin-top: var(--space-8);
+}
+
+.highlight h3 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-2);
+}
+
+/* Hint text */
+.hint {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-2);
+}
+
+/* Tooltip list - grid of items */
+.tooltipList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.tooltipList li {
+  background-color: var(--color-bg-card);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+/* Two column layout */
+.twoColumn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+@media (max-width: 900px) {
+  .twoColumn {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* System card */
+.systemCard {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--card-padding-md);
+}
+
+.systemLabel {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 4px 0;
+  line-height: 1;
+}
+
+.systemCard .systemTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 4px 0;
+  line-height: 1.2;
+}
+
+.systemTagline {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.capabilitiesList {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.capabilitiesList h4 {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-2);
+}
+
+.capabilitiesList ul {
+  margin: 0;
+  padding-left: 1.25em;
+}
+
+.capabilitiesList li {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-1);
+}
+
+/* Quality points - 2 column grid */
+.qualityPoints {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .qualityPoints {
+    grid-template-columns: 1fr;
+  }
+}
+
+.qualityPoint {
+  background-color: var(--color-bg-card);
+  padding: var(--card-padding-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.qualityPoint h4 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-2);
+  margin-top: 0;
+}
+
+.qualityPoint p {
+  font-size: var(--font-size-sm);
+  margin: 0;
+}
+
+/* Role evolution */
+.roleEvolution {
+  margin-top: var(--space-8);
+}
+
+.roleEvolution h3 {
+  margin-bottom: var(--space-4);
+}
+
+.roleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+@media (max-width: 768px) {
+  .roleGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.roleCard {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--card-padding-sm);
+}
+
+.roleCard h4 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-1);
+  margin-top: 0;
+}
+
+.roleCard p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+.roleConclusion {
+  margin-top: var(--space-4);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+/* Layers container */
+.layersContainer {
+  margin-top: var(--space-8);
+}
+
+.layer {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.layer:last-child {
+  border-bottom: none;
+}
+
+.layerNumber {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+}
+
+.layerContent {
+  flex: 1;
+}
+
+.layerContent h3 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-2);
+}
+
+.layerOutput {
+  background-color: var(--color-bg-card);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.layerOutput strong {
+  color: var(--color-text-primary);
+}
+
+.executionSteps {
+  margin: var(--space-2) 0 0 0;
+  padding-left: 1.25em;
+}
+
+.executionSteps li {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-sm);
+}
+
+.executionSteps li strong {
+  color: var(--color-text-primary);
+}
+
+/* Technical notes */
+.technicalNotes {
+  margin-top: var(--space-8);
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+}
+
+.technicalNotes h3 {
+  margin-bottom: var(--space-4);
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (max-width: 768px) {
+  .techGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.techItem {
+  background-color: var(--color-bg-card);
+  padding: var(--card-padding-sm);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.techItem h4 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-1);
+  margin-top: 0;
+}
+
+.techItem p {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+/* Phases */
+.phasesContainer {
+  margin-top: var(--space-8);
+}
+
+.phase {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--card-padding-md);
+  margin-bottom: var(--space-3);
+}
+
+.phase:last-child {
+  margin-bottom: 0;
+}
+
+.phaseHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.phaseNumber {
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-1) var(--space-2);
+  border-radius: 100px;
+}
+
+.phaseTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  flex: 1;
+}
+
+.phaseDuration {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+.phase ul {
+  margin: 0 0 var(--space-2) 0;
+  padding-left: 1.25em;
+}
+
+.phase li {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-1);
+}
+
+.phaseMetrics {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  margin: 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+}
+
+.phaseMetrics strong {
+  color: var(--color-text-secondary);
+}
+
+/* Metrics section */
+.metricsSection {
+  margin-top: var(--space-8);
+}
+
+.metricsSection h3 {
+  margin-bottom: var(--space-4);
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (max-width: 768px) {
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metricCard {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--card-padding-sm);
+}
+
+.metricCard h4 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-1);
+  margin-top: 0;
+}
+
+.metricCard p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  margin: 0;
+}
+
+.metricTarget {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+/* Risk mitigation */
+.riskMitigation {
+  margin-top: var(--space-8);
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--card-padding-md);
+}
+
+.riskMitigation h3 {
+  margin-bottom: var(--space-2);
+}
+
+.riskMitigation p {
+  margin: 0;
+}

@@ -1,0 +1,39 @@
+/* Header - Fixed navigation */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: var(--space-3) var(--padding-horizontal);
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-primary) 0%,
+    var(--color-bg-primary) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+.container {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+.logo {
+  display: inline-block;
+  pointer-events: auto;
+  opacity: 0.85;
+  transition: opacity var(--transition-fast);
+}
+
+.logo:hover {
+  opacity: 1;
+}
+
+.logo svg {
+  display: block;
+  height: 24px;
+  width: auto;
+}

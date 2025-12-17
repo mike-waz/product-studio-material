@@ -1,0 +1,100 @@
+/* Section Component - Base layout for all content sections */
+
+.section {
+  padding: var(--space-20) var(--padding-horizontal);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Alternate section backgrounds for visual rhythm */
+.alt {
+  background-color: var(--color-bg-secondary);
+}
+
+.container {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+/* Section Header */
+.header {
+  margin-bottom: var(--space-8);
+}
+
+.sectionNumber {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-2);
+}
+
+.title {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-snug);
+  margin: 0;
+}
+
+/* Content area */
+.content {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.content h3 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-2);
+}
+
+.content h3:first-child {
+  margin-top: 0;
+}
+
+.content h4 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.content p {
+  margin-bottom: var(--space-3);
+  max-width: var(--max-width-narrow);
+}
+
+.content p:last-child {
+  margin-bottom: 0;
+}
+
+.content ul {
+  margin-bottom: var(--space-3);
+  padding-left: 1.25em;
+}
+
+.content li {
+  margin-bottom: var(--space-1);
+  color: var(--color-text-secondary);
+}
+
+.content strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Wide variant - same container width for alignment, but allows overflow for diagrams */
+.wide .container {
+  max-width: var(--max-width-content);
+}

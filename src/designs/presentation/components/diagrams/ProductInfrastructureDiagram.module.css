@@ -1,0 +1,199 @@
+/* Product Infrastructure Diagram - HTML/CSS version */
+
+.container {
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-3);
+  margin: var(--space-8) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+/* System columns (left and right) */
+.system {
+  text-align: center;
+  padding: var(--space-2);
+}
+
+.label {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-1);
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--space-1) 0;
+}
+
+.tagline {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-3) 0;
+}
+
+/* Stack items */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.stackItem {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+}
+
+.stackItemMuted {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* Details link */
+.detailsLink {
+  background: none;
+  border: none;
+  font-family: var(--font-family);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-accent);
+  cursor: pointer;
+  padding: var(--space-1) var(--space-2);
+  transition: color var(--transition-fast);
+}
+
+.detailsLink:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Center section with PRD */
+.center {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0 var(--space-1);
+}
+
+/* Arrow */
+.arrow {
+  display: flex;
+  align-items: center;
+}
+
+.arrowLine {
+  width: 40px;
+  height: 1px;
+  background-color: var(--color-text-tertiary);
+}
+
+.arrowHead {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid var(--color-text-tertiary);
+}
+
+/* PRD Document */
+.prdWrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prdDocument {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: var(--space-2);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  width: 60px;
+  cursor: help;
+  transition: border-color var(--transition-fast);
+}
+
+.prdDocument:hover {
+  border-color: var(--color-text-tertiary);
+}
+
+.prdLine {
+  height: 4px;
+  width: 100%;
+  background-color: #666;
+  border-radius: 2px;
+}
+
+.prdLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  margin-top: var(--space-1);
+}
+
+.prdTooltip {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  padding: var(--space-2);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+}
+
+/* Bottom tagline */
+.bottomTagline {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: var(--space-4) 0 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.bottomTagline strong {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-bold);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .center {
+    flex-direction: column;
+    padding: var(--space-2) 0;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+  }
+
+  .arrowLine {
+    width: 24px;
+  }
+}
