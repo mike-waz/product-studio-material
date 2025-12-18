@@ -1,108 +1,57 @@
 import Section from '../Section';
-import { IconEye, IconAccessibility, IconPuzzle, IconMessage, IconStar, IconTrophy, IconTarget, IconUsers, IconClock } from '../icons';
 import styles from './Section3.module.css';
 
-const qualityAuditors = [
+const transformations = [
   {
-    name: 'UX Quality',
-    description: 'Interface patterns, interaction design, usability principles',
-    icon: IconEye,
+    header: 'From Pixels to Code',
+    body: "Code becomes the common currency between product design and engineering. It's how AI thinks about products—the fundamental building blocks. Working in code means working with the actual material.",
   },
   {
-    name: 'Accessibility',
-    description: 'WCAG compliance, screen reader compatibility, inclusive design',
-    icon: IconAccessibility,
+    header: 'From Artifacts to Systems',
+    body: 'Stop designing screens. Start designing the infrastructure that generates them. The value is in the system, not the artifact.',
   },
   {
-    name: 'Cross-Product Coherence',
-    description: 'Consistency across the entire Lightspeed product suite',
-    icon: IconPuzzle,
-  },
-  {
-    name: 'Copy & Brand Voice',
-    description: 'Messaging clarity, tone alignment, brand guidelines',
-    icon: IconMessage,
-  },
-  {
-    name: 'Customer Delight',
-    description: 'Emotional resonance and experience quality',
-    icon: IconStar,
-  },
-  {
-    name: 'Market Differentiation',
-    description: 'Competitive positioning, unique value expression',
-    icon: IconTrophy,
-  },
-  {
-    name: 'Solution Fit',
-    description: 'PRD alignment and requirements satisfaction',
-    icon: IconTarget,
+    header: 'From Manual Iteration to Encoded Quality',
+    body: 'Build judgment into systems rather than applying it manually to every output. Quality governance becomes automated and scalable.',
   },
 ];
 
 export default function Section3ForceMultiplication() {
   return (
-    <Section id="force-multiplication" sectionNumber="03" title="Inside Product Studio: Quality Through Specialization">
-      <p className={styles.intro}>
-        Product Studio achieves consistent quality through specialized AI auditors. Each agent focuses
-        on a specific dimension—working in parallel to ensure every output meets standards without
-        bottlenecks or handoff delays.
+    <Section
+      id="paradigm-shift"
+      sectionNumber="The Paradigm Shift"
+      title="From Craft Silo to Organizational Infrastructure"
+    >
+      <p className={styles.subhead}>
+        Design shifts from a phase to a foundation layer underlying all product and engineering work
       </p>
 
-      {/* Quality Auditors Grid */}
-      <div className={styles.auditorsSection}>
-        <h3 className={styles.sectionLabel}>Quality Auditing Across 7+ Dimensions</h3>
-        <p className={styles.sectionDesc}>Each design passes through automated evaluation:</p>
+      <p className={styles.bodyIntro}>
+        For this infrastructure to deliver velocity and quality at scale, design must operate differently.
+      </p>
 
-        <div className={styles.auditorsGrid}>
-          {qualityAuditors.map((auditor) => {
-            const Icon = auditor.icon;
-            return (
-              <div key={auditor.name} className={styles.auditorCard}>
-                <div className={styles.auditorIcon}>
-                  <Icon size={24} />
-                </div>
-                <h4>{auditor.name}</h4>
-                <p>{auditor.description}</p>
-              </div>
-            );
-          })}
-        </div>
+      {/* Transformation Items */}
+      <div className={styles.transformations}>
+        {transformations.map((item) => (
+          <div key={item.header} className={styles.transformationItem}>
+            <h3>{item.header}</h3>
+            <p>{item.body}</p>
+          </div>
+        ))}
       </div>
 
-      {/* Benefits Row */}
-      <div className={styles.benefitsRow}>
-        <div className={styles.benefitCard}>
-          <div className={styles.benefitIcon}>
-            <IconUsers size={28} />
-          </div>
-          <div>
-            <h4>Independent of Individual Skill</h4>
-            <p>
-              Quality doesn't depend on a PM's design intuition. The system applies sophisticated
-              principles consistently—all PMs produce excellent results regardless of background.
-            </p>
-          </div>
-        </div>
-
-        <div className={styles.benefitCard}>
-          <div className={styles.benefitIcon}>
-            <IconClock size={28} />
-          </div>
-          <div>
-            <h4>Always-On Capacity</h4>
-            <p>
-              Agent workers don't sleep, don't have off days, don't burn out. Consistent quality
-              bars regardless of volume. Capacity scales with ambition, not headcount.
-            </p>
-          </div>
-        </div>
+      {/* Primary Callout */}
+      <div className={styles.primaryCallout}>
+        <p className={styles.calloutEmphasis}>Product design is not pretty UI.</p>
+        <p className={styles.calloutBody}>
+          Design is the encoding of judgment, context, and domain intuition into our products.
+        </p>
       </div>
 
-      {/* Bottom Callout */}
-      <div className={styles.callout}>
-        <h3>Force Multiplication Without Compromise</h3>
-        <p>More coverage, higher quality, faster delivery—simultaneously.</p>
+      {/* Closing Statement */}
+      <div className={styles.closingStatement}>
+        <p>Force multiplication without compromise.</p>
       </div>
     </Section>
   );

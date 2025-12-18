@@ -1,0 +1,97 @@
+/* Section 4: The Future of the Design Function */
+
+/* Subhead - immediately below title */
+.subhead {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-8);
+}
+
+/* Body Sections - prose-style content blocks */
+.bodySection {
+  margin-bottom: var(--space-8);
+}
+
+.bodySection h3 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.bodySection p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-3);
+}
+
+.bodySection p:last-child {
+  margin-bottom: 0;
+}
+
+/* Mid-section Callout */
+.midCallout {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.midCallout p {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin: 0;
+  font-style: italic;
+}
+
+/* Closing Formula - the memorable takeaway */
+.closingFormula {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--card-padding-lg);
+  text-align: center;
+  margin-top: var(--space-10);
+}
+
+.formulaLead {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+  line-height: var(--line-height-relaxed);
+}
+
+.formula {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.formula span {
+  white-space: nowrap;
+}
+
+.multiply {
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-normal);
+}
+
+@media (max-width: 600px) {
+  .formula {
+    font-size: var(--font-size-lg);
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .multiply {
+    display: none;
+  }
+}

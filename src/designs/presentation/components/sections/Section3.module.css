@@ -1,190 +1,85 @@
-/* Section 3: Force Multiplication */
+/* Section 3: The Paradigm Shift */
 
-.intro {
+/* Subhead - immediately below title */
+.subhead {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-8);
   line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-6);
 }
 
-/* Auditors Section */
-.auditorsSection {
+/* Body intro paragraph */
+.bodyIntro {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-8);
 }
 
-.sectionLabel {
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: var(--space-1);
+/* Transformation Items */
+.transformations {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin-bottom: var(--space-10);
 }
 
-.sectionDesc {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-tertiary);
-  margin-bottom: var(--space-4);
+.transformationItem {
+  padding-left: var(--space-4);
+  border-left: 2px solid var(--color-border);
 }
 
-/* Auditors Grid - 4 columns */
-.auditorsGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-2);
-}
-
-@media (max-width: 1000px) {
-  .auditorsGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .auditorsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .auditorsGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
-.auditorCard {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--card-padding-sm);
-  transition: border-color var(--transition-normal);
-}
-
-.auditorCard:hover {
-  border-color: var(--color-text-tertiary);
-}
-
-.auditorIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--color-bg-elevated);
-  border-radius: var(--radius-sm);
-  color: var(--color-text-tertiary);
-  margin-bottom: var(--space-1);
-}
-
-.auditorCard h4 {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+.transformationItem h3 {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-  margin-bottom: 4px;
+  margin-bottom: var(--space-2);
 }
 
-.auditorCard p {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-tertiary);
-  line-height: var(--line-height-normal);
+.transformationItem p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
   margin: 0;
 }
 
-/* Benefits Row - 3 columns */
-.benefitsRow {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-3);
+/* Primary Callout - prominent quote block */
+.primaryCallout {
+  text-align: center;
+  padding: var(--space-10) var(--space-6);
   margin-bottom: var(--space-8);
 }
 
-@media (max-width: 900px) {
-  .benefitsRow {
-    grid-template-columns: 1fr;
-  }
-}
-
-.benefitCard {
-  display: flex;
-  gap: var(--space-2);
-  align-items: flex-start;
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  padding: var(--card-padding-sm);
-}
-
-.benefitIcon {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px;
-  height: 48px;
-  background: var(--color-bg-elevated);
-  border-radius: var(--radius-sm);
-  color: var(--color-text-tertiary);
-}
-
-.benefitCard h4 {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
+.calloutEmphasis {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-  margin-bottom: var(--space-1);
+  margin-bottom: var(--space-3);
+  line-height: var(--line-height-tight);
 }
 
-.benefitCard p {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-tertiary);
-  line-height: var(--line-height-normal);
+.calloutBody {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
   margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Bottom Callout */
-.callout {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Closing Statement */
+.closingStatement {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--card-padding-lg);
-  gap: var(--space-6);
+  text-align: center;
 }
 
-@media (max-width: 600px) {
-  .callout {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-.calloutContent h3 {
+.closingStatement p {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-medium);
   color: var(--color-text-primary);
-  margin-bottom: var(--space-1);
-}
-
-.calloutContent p {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
   margin: 0;
-}
-
-.calloutVisual {
-  flex-shrink: 0;
-}
-
-.multiplier {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  background: var(--color-bg-elevated);
-  border-radius: 50%;
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
 }
