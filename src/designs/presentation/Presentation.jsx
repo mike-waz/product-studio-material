@@ -8,8 +8,8 @@ import {
   Section2TheSystem,
   Section3ForceMultiplication,
   Section4OperationalTransformation,
-  Section5HowItWorks,
-  Section6Implementation,
+  Section5EyesWideOpen,
+  Section6Appendix,
 } from './components/sections';
 import './Presentation.css';
 
@@ -24,8 +24,8 @@ function Presentation() {
           <Section2TheSystem />
           <Section3ForceMultiplication />
           <Section4OperationalTransformation />
-          <Section5HowItWorks />
-          <Section6Implementation />
+          <Section5EyesWideOpen />
+          <Section6Appendix />
         </main>
         <Footer />
       </div>

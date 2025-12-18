@@ -8,85 +8,214 @@
   margin-bottom: var(--space-8);
 }
 
-/* Body Sections - prose-style content blocks */
-.bodySection {
+/* ============================================
+   Solid to Liquid Metaphor Card
+   ============================================ */
+
+.metaphorCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--card-padding-lg);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-6);
   margin-bottom: var(--space-8);
 }
 
-.bodySection h3 {
+.metaphorVisual {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+}
+
+.solidShape {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-sm);
+}
+
+.metaphorArrow {
+  font-size: var(--font-size-2xl);
+  color: rgba(255, 255, 255, 0.5);
+  transform: rotate(90deg);
+}
+
+.liquidShape {
+  width: 72px;
+  height: 52px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50% 50% 45% 45%;
+}
+
+.metaphorContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.metaphorTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.metaphorContent p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-3);
+}
+
+.metaphorEmphasis {
+  color: var(--color-text-primary) !important;
+  font-weight: var(--font-weight-medium);
+}
+
+@media (max-width: 600px) {
+  .metaphorCard {
+    grid-template-columns: 1fr;
+  }
+
+  .metaphorVisual {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .metaphorArrow {
+    transform: rotate(0deg);
+  }
+}
+
+/* ============================================
+   Mid-section Callout
+   ============================================ */
+
+.midCallout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+  text-align: center;
+  padding: var(--space-10) var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.calloutBar {
+  width: 40px;
+  height: 2px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+.midCallout p {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin: 0;
+  font-style: italic;
+  max-width: 480px;
+}
+
+@media (max-width: 600px) {
+  .calloutBar {
+    display: none;
+  }
+
+  .midCallout p {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* ============================================
+   Two Column Content Cards
+   ============================================ */
+
+.twoColumnGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-10);
+}
+
+@media (max-width: 768px) {
+  .twoColumnGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contentCard {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--card-padding-md);
+}
+
+.contentCard h3 {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
   margin-bottom: var(--space-3);
 }
 
-.bodySection p {
-  font-size: var(--font-size-base);
+.contentCard p {
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-3);
 }
 
-.bodySection p:last-child {
+.contentCard p:last-child {
   margin-bottom: 0;
 }
 
-/* Mid-section Callout */
-.midCallout {
-  text-align: center;
-  padding: var(--space-8) var(--space-4);
-  margin-bottom: var(--space-8);
-}
-
-.midCallout p {
-  font-size: var(--font-size-lg);
+.cardEmphasis {
+  color: var(--color-text-primary) !important;
   font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-  margin: 0;
-  font-style: italic;
 }
 
-/* Closing Formula - the memorable takeaway */
+/* ============================================
+   Closing Formula - Simple and Clean
+   ============================================ */
+
 .closingFormula {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--card-padding-lg);
   text-align: center;
-  margin-top: var(--space-10);
+  padding: var(--space-10) var(--space-4);
 }
 
 .formulaLead {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
   line-height: var(--line-height-relaxed);
 }
 
-.formula {
+.formulaDisplay {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-3);
+}
+
+.formulaTerm {
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin: 0;
-}
-
-.formula span {
-  white-space: nowrap;
 }
 
 .multiply {
+  font-size: var(--font-size-lg);
   color: var(--color-text-tertiary);
-  font-weight: var(--font-weight-normal);
 }
 
-@media (max-width: 600px) {
-  .formula {
-    font-size: var(--font-size-lg);
+@media (max-width: 500px) {
+  .formulaDisplay {
     flex-direction: column;
     gap: var(--space-1);
   }

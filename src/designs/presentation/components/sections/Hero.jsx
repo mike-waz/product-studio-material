@@ -24,7 +24,10 @@ export default function Hero() {
         </h1>
 
         <p className={styles.subhead}>
-          High Velocity AI Pipelines&nbsp; •&nbsp; Agentic Infrastructure&nbsp; •&nbsp; Force Multiplication
+          <strong>Everyone moves faster with AI. But who moves fast in a way that matters?</strong>
+          <span className={styles.subheadLine2}>
+            High Velocity AI Pipelines&nbsp; •&nbsp; Agentic Infrastructure&nbsp; •&nbsp; Force Multiplication
+          </span>
         </p>
 
         <div className={styles.diagramWrapper}>
