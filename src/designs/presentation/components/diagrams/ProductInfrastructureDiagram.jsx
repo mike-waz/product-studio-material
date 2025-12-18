@@ -23,8 +23,8 @@ export default function ProductInfrastructureDiagram({ onProductHQClick, onProdu
             className={styles.detailsLink}
             onClick={onProductHQClick}
             type="button"
-          >11
-            Get Details →
+          >
+            Details →
           </button>
         </div>
 
@@ -65,7 +65,7 @@ export default function ProductInfrastructureDiagram({ onProductHQClick, onProdu
         <div className={styles.system}>
           <div className={styles.label}>EXECUTION</div>
           <h3 className={styles.title}>Product Studio</h3>
-          <p className={styles.tagline}>Production-ready designs in hours</p>
+          <p className={styles.tagline}>Design iterations in hours</p>
 
           <div className={styles.stack}>
             <div className={styles.stackItem}>UX/UI agentic AI stack</div>
@@ -78,14 +78,14 @@ export default function ProductInfrastructureDiagram({ onProductHQClick, onProdu
             onClick={onProductStudioClick}
             type="button"
           >
-            Get Details →
+            Details →
           </button>
         </div>
       </div>
 
       {/* Bottom tagline */}
       <p className={styles.bottomTagline}>
-        Together: Strategy to production <strong>in hours</strong>, with continuous improvement
+        Together: Strategy to iteration <strong>in hours</strong>, with continuous improvement
       </p>
     </div>
   );

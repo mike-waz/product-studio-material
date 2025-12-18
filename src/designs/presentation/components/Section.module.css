@@ -72,7 +72,6 @@
 
 .content p {
   margin-bottom: var(--space-3);
-  max-width: var(--max-width-narrow);
 }
 
 .content p:last-child {

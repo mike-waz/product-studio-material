@@ -16,11 +16,8 @@ export default function Section2TheSystem() {
       />
 
       <div className={styles.highlight}>
-        <h3>Together: Strategy to Production in Hours</h3>
         <p>
-          This integrated system would enable unprecedented velocity while maintaining quality at scale.
-          Strategic intelligence informs execution, execution generates insights, insights refine
-          strategy—a continuous improvement cycle that compounds over time.
+          A system that learns from every cycle—continuously improving over time.
         </p>
       </div>
 

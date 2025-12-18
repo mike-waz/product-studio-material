@@ -41,7 +41,7 @@ export default function Section5HowItWorks() {
                 <strong>Audit:</strong> Parallel quality evaluation across 7+ dimensions
               </li>
               <li>
-                <strong>Refine:</strong> Self-auditing loops improve quality without human intervention
+                <strong>Refine:</strong> Self-auditing loops surface issues early, keeping humans focused on decisions that matter
               </li>
               <li>
                 <strong>Review:</strong> Human governance checkpoint ensures quality and intent alignment

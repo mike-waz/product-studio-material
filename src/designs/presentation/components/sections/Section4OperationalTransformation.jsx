@@ -3,7 +3,7 @@ import styles from './Sections.module.css';
 
 export default function Section4OperationalTransformation() {
   return (
-    <Section id="operational-transformation" sectionNumber="04" title="New Way of Working for AI-Native Operations" alt>
+    <Section id="operational-transformation" sectionNumber="04" title="Redesigning the Design Function" alt>
       <p>
         This infrastructure wouldn't just make existing work faster—it would fundamentally transform
         how product teams operate.

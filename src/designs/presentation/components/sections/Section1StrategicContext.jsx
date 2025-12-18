@@ -18,7 +18,7 @@ export default function Section1StrategicContext() {
           </div>
           <div className={styles.valueMetric}>Hours</div>
           <div className={styles.valueLabel}>not weeks</div>
-          <h3>Hypervelocity Development</h3>
+          <h3>Hypervelocity Product Delivery</h3>
           <p>
             From strategy to production in hours. This velocity compounds—more ideas tested,
             faster product-market fit, first-mover advantage on opportunities.
@@ -29,11 +29,11 @@ export default function Section1StrategicContext() {
           <div className={styles.valueIcon}>
             <IconShield size={32} />
           </div>
-          <div className={styles.valueMetric}>7+</div>
-          <div className={styles.valueLabel}>quality dimensions</div>
-          <h3>Unparalleled Quality at Scale</h3>
+          <div className={styles.valueMetric}>100%</div>
+          <div className={styles.valueLabel}>quality coverage</div>
+          <h3>Increased Quality at Scale</h3>
           <p>
-            Automated governance across UX, accessibility, coherence, brand voice,
+            AI-assisted governance across UX, accessibility, coherence, brand voice,
             delight, differentiation, and solution fit. Impossible to achieve manually.
           </p>
         </div>
@@ -43,11 +43,10 @@ export default function Section1StrategicContext() {
             <IconChart size={32} />
           </div>
           <div className={styles.valueMetric}>∞</div>
-          <div className={styles.valueLabel}>experiments possible</div>
+          <div className={styles.valueLabel}>possibilities</div>
           <h3>Innovation Through Iteration</h3>
           <p>
-            Higher velocity enables more experimentation. More experiments yield better insights.
-            Better insights drive market differentiation.
+            Higher velocity means faster learning and richer insights—the foundation of market differentiation.
           </p>
         </div>
       </div>
@@ -61,12 +60,10 @@ export default function Section1StrategicContext() {
           <div>
             <h3>Our Edge: Infrastructure Over Improvisation</h3>
             <p>
-              Most product teams are stuck at surface-level AI adoption—substituting prompts for pixel pushing rather than building infrastructure that unlocks real capability. It feels productive but doesn't scale.
+              Most product teams are stuck at surface-level AI adoption—treating prompts as productivity. It feels efficient but doesn't scale. Agentic infrastructure unlocks real capability.
             </p>
             <p>
-              <strong>Our approach:</strong> Build optimized infrastructure where AI has the correct inputs
-              and structured workflows. Humans provide strategic direction and evaluate outputs—the
-              machinery produces consistent excellence.
+              <strong>Our approach:</strong> Purpose-built AI pipelines with structured inputs and quality gates. PMs own strategy; the system accelerates execution.
             </p>
           </div>
         </div>

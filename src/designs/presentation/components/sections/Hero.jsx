@@ -24,12 +24,14 @@ export default function Hero() {
         </h1>
 
         <p className={styles.subhead}>
-          Each Product Manager orchestrates a specialized team of AI agents—multiplying
-          capability while maintaining strategic control.
+          High Velocity AI Pipelines&nbsp; •&nbsp; Agentic Infrastructure&nbsp; •&nbsp; Force Multiplication
         </p>
 
         <div className={styles.diagramWrapper}>
           <PMAgentTeamDiagram />
+          <p className={styles.diagramCaption}>
+            AI not just as a tool, but as a fundamental partner
+          </p>
         </div>
       </div>
 

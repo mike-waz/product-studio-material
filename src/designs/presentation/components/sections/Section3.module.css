@@ -3,7 +3,6 @@
 .intro {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
-  max-width: var(--max-width-narrow);
   margin-bottom: var(--space-8);
   line-height: var(--line-height-relaxed);
 }

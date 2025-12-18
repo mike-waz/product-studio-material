@@ -40,6 +40,11 @@
   text-align: center;
   position: relative;
   z-index: 1;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Badge - neutral, not accent colored */
@@ -65,10 +70,11 @@
   margin-bottom: var(--space-4);
   line-height: var(--line-height-tight);
   letter-spacing: -0.03em;
+  text-align: center;
 }
 
 .headlineAccent {
-  background: linear-gradient(135deg, var(--color-accent) 0%, #93C5FD 100%);
+  background: linear-gradient(135deg, rgba(85, 146, 221, 1) 0%, rgba(147, 197, 253, 1) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -80,13 +86,39 @@
   color: var(--color-text-secondary);
   line-height: var(--line-height-normal);
   max-width: var(--max-width-narrow);
-  margin: 0 auto var(--space-8);
+  width: 100%;
+  margin: 0 0 var(--space-8) 0;
+  text-align: center;
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
 }
 
 /* Diagram wrapper */
 .diagramWrapper {
-  margin: 0 auto var(--space-8);
+  margin: 0 auto var(--space-3);
   max-width: 560px;
+  width: 560px;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.diagramWrapper > * {
+  width: 560px !important;
+  max-width: 560px !important;
+}
+
+.diagramWrapper svg {
+  width: 560px !important;
+  height: 320px !important;
+}
+
+/* Diagram caption */
+.diagramCaption {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  margin: var(--space-2) 0 0 0;
 }
 
 /* Intro card - centered to match hero */
