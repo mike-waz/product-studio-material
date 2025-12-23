@@ -28,30 +28,33 @@ Use `mcp__figma-desktop__get_design_context` with:
 ### 3. Analyze the design
 From the Figma output, identify:
 - **Structure**: What are the main layers/groups?
-- **Components**: What Celeritas components map to each layer?
-- **Colors**: Extract hex values, map to Celeritas variants if possible
-- **Spacing**: Note padding, margins, gaps
+- **Components**: What MUI components map to each layer?
+- **Colors**: Extract hex values, map to MUI theme tokens if possible
+- **Spacing**: Note padding, margins, gaps (convert to MUI spacing units)
 - **Typography**: Font sizes, weights, colors
 
-### 4. Map to Celeritas
-Reference `CELERITAS_REFERENCE.md` to find matching components:
+### 4. Map to Material UI
+Reference `MATERIAL_UI_REFERENCE.md` to find matching components:
 
-| Figma Element | Celeritas Component |
-|---------------|---------------------|
-| Circle with initials | `<Avatar initials="XX">` |
+| Figma Element | MUI Component |
+|---------------|---------------|
+| Circle with initials | `<Avatar>JD</Avatar>` |
 | Stacked circles | `<AvatarGroup>` |
-| Filled button | `<Button variant="primary">` |
-| Outlined button | `<Button variant="secondary">` |
-| Pill with number | `<Badge>` |
+| Filled button | `<Button variant="contained">` |
+| Outlined button | `<Button variant="outlined">` |
+| Notification badge | `<Badge badgeContent={N}>` |
 | Pill with text | `<Chip label="...">` |
-| Toggle switch | `<Toggle>` |
-| Input field | `<TextInput>` |
+| Toggle switch | `<Switch>` |
+| Input field | `<TextField>` |
+| Card container | `<Card>` with `<CardContent>` |
+| Modal/dialog | `<Dialog>` |
 
 ### 5. Generate component
 Create JSX that:
-- Uses Celeritas components wherever possible
+- Uses MUI components wherever possible
 - Preserves the visual hierarchy from Figma
-- Uses correct props based on the design (colors, sizes, variants)
+- Uses sx prop with theme tokens (e.g., `bgcolor: 'primary.main'`)
+- Uses MUI spacing system (e.g., `p: 2` = 16px)
 - Includes minimal custom CSS only for layout
 
 ### 6. Save and update

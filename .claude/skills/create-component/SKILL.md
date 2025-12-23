@@ -1,11 +1,11 @@
 ---
 name: create-component
-description: Build a React component from a description using Celeritas design system. Use when user describes a UI component they want built, says "create component", or "/create-component".
+description: Build a React component from a description using Material UI (MUI). Use when user describes a UI component they want built, says "create component", or "/create-component".
 ---
 
 # Create Component
 
-Build a React component from a natural language description, using Celeritas design system components.
+Build a React component from a natural language description, using Material UI components and Material Design principles.
 
 ## When to Use
 
@@ -22,20 +22,20 @@ Check `projects/` for the current project. If multiple projects exist and none i
 Read these files:
 - `projects/[project]/PROJECT.md` — Project context
 - `projects/[project]/components/` — Existing components (for consistency)
-- `reference/CELERITAS_REFERENCE.md` — Component API reference
+- `reference/MATERIAL_UI_REFERENCE.md` — Component API reference
 
 ### 3. Analyze the request
 From the user's description, identify:
 - What type of component is needed (card, modal, list item, etc.)
 - What data it displays
 - What interactions it has (buttons, clicks, etc.)
-- What Celeritas components to use
+- What MUI components to use
 
 ### 4. Generate the component
 Create a `.jsx` file with:
-- Proper imports from `design_system`
+- Proper imports from `@mui/material` and `@mui/icons-material`
 - Props with sensible defaults
-- Celeritas components used correctly
+- MUI components used correctly with sx prop for styling
 - PropTypes defined
 - Clean, readable code
 
@@ -48,15 +48,22 @@ Create a `.jsx` file with:
 
 ```jsx
 import PropTypes from 'prop-types';
-import {
-  // Celeritas imports
-} from 'design_system';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+// ... other MUI imports
 
 export default function ComponentName({
   // props with defaults
 }) {
   return (
-    // JSX using Celeritas components
+    <Card sx={{ /* styling */ }}>
+      <CardContent>
+        {/* Component content using MUI components */}
+      </CardContent>
+    </Card>
   );
 }
 
@@ -67,8 +74,10 @@ ComponentName.propTypes = {
 
 ## Guidelines
 
-- **Always use Celeritas** — Check CELERITAS_REFERENCE.md first
+- **Always use MUI** — Check MATERIAL_UI_REFERENCE.md first
+- **Use sx prop for styling** — Never use inline style objects or Tailwind
+- **Use theme tokens** — `bgcolor: 'primary.main'`, `color: 'text.secondary'`, etc.
 - **Sensible defaults** — Props should have reasonable default values
-- **Minimal custom CSS** — Rely on Celeritas styling; only add layout CSS if needed
+- **Minimal custom CSS** — Rely on MUI styling and sx prop
 - **Descriptive names** — `StudentStatusCard` not `Card1`
 - **PropTypes always** — Document all props

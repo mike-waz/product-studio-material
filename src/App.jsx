@@ -1,24 +1,23 @@
 import { useState } from 'react'
-import './App.css'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import Card from '@mui/material/Card'
+import CardContent from '@mui/material/CardContent'
+import CardActionArea from '@mui/material/CardActionArea'
+import Container from '@mui/material/Container'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
-// Import designs here as you create them
-import AlertSettings from './designs/case-justifications/AlertSettings'
-import Presentation from './designs/presentation/Presentation'
-import Playwright from './designs/playwright/Playwright'
-import PasswordGate from './components/PasswordGate'
-
-// Project: Simple Screen Test v5
-import ScheduleListV5 from '../projects/simple-screen-test-v5/components/ScheduleList'
+// Import project components here as you create them
+// Example:
+// import MyComponent from '../projects/my-project/components/MyComponent'
 
 function App() {
   const [currentDesign, setCurrentDesign] = useState(null)
 
   // Add new designs to this list
   const designs = [
-    { id: 'alert-settings', name: 'Alert Settings', component: AlertSettings },
-    { id: 'presentation', name: 'Presentation', component: Presentation },
-    { id: 'playwright', name: 'Student Card (Playwright)', component: Playwright },
-    { id: 'schedule-list-v5', name: 'Schedule List (v5)', component: ScheduleListV5 },
+    // { id: 'example', name: 'Example Component', component: ExampleComponent },
     // Add more designs here...
   ]
 
@@ -29,56 +28,80 @@ function App() {
     if (design?.component) {
       const DesignComponent = design.component
       return (
-        <PasswordGate>
-          <div className="design-view">
-            <button className="back-button" onClick={() => setCurrentDesign(null)}>
-              ← Back to Gallery
-            </button>
-            <DesignComponent />
-          </div>
-        </PasswordGate>
+        <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+          <Box sx={{ p: 2 }}>
+            <Button
+              startIcon={<ArrowBackIcon />}
+              onClick={() => setCurrentDesign(null)}
+              variant="text"
+            >
+              Back to Gallery
+            </Button>
+          </Box>
+          <DesignComponent />
+        </Box>
       )
     }
   }
 
   return (
-    <PasswordGate>
-      <div className="workspace">
-        <header className="workspace-header">
-          <h1>Design Workspace</h1>
-          <p>Your personal design sandbox</p>
-        </header>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+      <Container maxWidth="lg" sx={{ py: 4 }}>
+        <Box sx={{ textAlign: 'center', mb: 4 }}>
+          <Typography variant="h3" component="h1" gutterBottom>
+            Project Studio
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary">
+            Material Design Edition
+          </Typography>
+        </Box>
 
-        <main className="design-gallery">
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center' }}>
           {activeDesigns.length > 0 ? (
-            <div className="design-grid">
-              {activeDesigns.map(design => (
-                <button
-                  key={design.id}
-                  className="design-card"
-                  onClick={() => setCurrentDesign(design.id)}
-                >
-                  <div className="design-card-preview">
-                    <span className="preview-placeholder">Preview</span>
-                  </div>
-                  <h3>{design.name}</h3>
-                </button>
-              ))}
-            </div>
+            activeDesigns.map(design => (
+              <Card key={design.id} sx={{ width: 280 }}>
+                <CardActionArea onClick={() => setCurrentDesign(design.id)}>
+                  <Box
+                    sx={{
+                      height: 140,
+                      bgcolor: 'grey.100',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Typography color="text.secondary">Preview</Typography>
+                  </Box>
+                  <CardContent>
+                    <Typography variant="h6">{design.name}</Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            ))
           ) : (
-            <div className="empty-state">
-              <h2>Ready to design!</h2>
-              <p>Your first project: <strong>Alert Settings</strong></p>
-              <p className="hint">Describe your existing settings page and I'll build it here.</p>
-            </div>
+            <Card sx={{ maxWidth: 400, textAlign: 'center' }}>
+              <CardContent sx={{ py: 4 }}>
+                <Typography variant="h5" gutterBottom>
+                  Ready to design!
+                </Typography>
+                <Typography color="text.secondary" paragraph>
+                  Create a new project to get started.
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  Say: "Create a new project called [Name]"
+                </Typography>
+              </CardContent>
+            </Card>
           )}
-        </main>
+        </Box>
 
-        <footer className="workspace-footer">
-          <p>Designs are saved in <code>src/designs/</code></p>
-        </footer>
-      </div>
-    </PasswordGate>
+        <Box sx={{ mt: 4, textAlign: 'center' }}>
+          <Typography variant="caption" color="text.secondary">
+            Prototypes are saved in <code>projects/</code>
+          </Typography>
+        </Box>
+      </Container>
+    </Box>
   )
 }
 

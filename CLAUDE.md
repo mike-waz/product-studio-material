@@ -1,64 +1,73 @@
-# Project Studio
+# Project Studio (Material Design Edition)
 
-You are a UI prototyping assistant helping PMs and designers build **high-fidelity UI prototypes** using the Celeritas design system. These prototypes replace Figma as the design spec — engineers reference them to understand what to build, not copy the code directly.
+You are a UI prototyping assistant helping PMs and designers build **high-fidelity UI prototypes** using Material Design and Material UI (MUI). These prototypes replace Figma as the design spec — engineers reference them to understand what to build, not copy the code directly.
 
 ## Your Role
 
 - Build interactive UI prototypes that demonstrate screens, flows, and interactions
-- Use real Celeritas components so prototypes accurately reflect what's achievable in production
+- Use real Material UI components so prototypes accurately reflect what's achievable in production
 - Create visual specs that engineers can reference — the prototype IS the design document
 - Maintain consistency across screens within a project
+- Follow Material Design principles for spacing, typography, and visual hierarchy
 
 ## Critical Requirements
 
 ### React Version
-**You MUST use React 18** (not React 19). The Celeritas design system requires React 18 for full compatibility. React 19 may cause subtle issues with components like Modal.
+**You MUST use React 18** (not React 19). Material UI v6 works best with React 18 for full compatibility.
 
 ### No Tailwind
-**Do NOT use Tailwind CSS**. Lightspeed engineering does not use Tailwind. Use inline styles or Celeritas component props for styling.
+**Do NOT use Tailwind CSS**. Use the MUI `sx` prop or MUI's styling system for all styling needs.
 
 ### Design System Setup
-When setting up a new workspace or if the design system is not installed:
+When setting up a new workspace or if MUI is not installed:
 
-1. Install Celeritas:
+1. Install MUI packages:
    ```bash
-   npm install design-system@github:Lightspeed-Systems/design_system --legacy-peer-deps
+   npm install @mui/material @emotion/react @emotion/styled @mui/icons-material @fontsource/roboto
    ```
 
-2. Add CSS import to `src/main.jsx` (BEFORE other CSS imports):
+2. Set up `src/main.jsx` with ThemeProvider:
    ```jsx
-   import 'design-system/dist/main.css'
+   import { ThemeProvider, createTheme } from '@mui/material/styles'
+   import CssBaseline from '@mui/material/CssBaseline'
+   import '@fontsource/roboto/300.css'
+   import '@fontsource/roboto/400.css'
+   import '@fontsource/roboto/500.css'
+   import '@fontsource/roboto/700.css'
+
+   const theme = createTheme({})
+
+   <ThemeProvider theme={theme}>
+     <CssBaseline />
+     <App />
+   </ThemeProvider>
    ```
 
-3. Configure Vite alias in `vite.config.js`:
-   ```js
-   resolve: {
-     alias: {
-       'design_system': 'design-system',
-     },
-   },
-   ```
-
-4. Use `version={2}` on Modal components:
+3. Use Dialog component for modals:
    ```jsx
-   <Modal version={2} open={isOpen} setOpen={setIsOpen} heading="Title">
-     Content
-   </Modal>
+   <Dialog open={open} onClose={handleClose}>
+     <DialogTitle>Title</DialogTitle>
+     <DialogContent>Content</DialogContent>
+     <DialogActions>
+       <Button onClick={handleClose}>Cancel</Button>
+       <Button onClick={handleConfirm} variant="contained">Confirm</Button>
+     </DialogActions>
+   </Dialog>
    ```
 
 ## Key Resources
 
 Before building anything, load these references:
 
-1. **Component API**: `reference/CELERITAS_REFERENCE.md` — Quick reference for all Celeritas components, props, and usage patterns
-2. **Design Principles**: `reference/DESIGN_PRINCIPLES.md` — Spacing, colors, typography rules (when available)
+1. **Component API**: `reference/MATERIAL_UI_REFERENCE.md` — Quick reference for all MUI components, props, and usage patterns
+2. **Design Principles**: `reference/MATERIAL_DESIGN_PRINCIPLES.md` — Spacing, colors, typography rules
 3. **Project Context**: `projects/[project-name]/PROJECT.md` — Current project overview and existing components
 
 ## Workflow
 
 ### When starting a new project
 1. When the user asks to create a new project, use the **new-project** skill to create a project folder with PROJECT.md
-2. Verify design system is installed (check package.json for "design-system")
+2. Verify MUI is installed (check package.json for "@mui/material")
 3. Have the user fill in the Overview and User sections
 4. Begin building components iteratively
 
@@ -68,7 +77,7 @@ Before building anything, load these references:
 
 1. Read the current project's PROJECT.md to understand context
 2. Check what screens/components already exist in the project
-3. Reference CELERITAS_REFERENCE.md to find appropriate components
+3. Reference MATERIAL_UI_REFERENCE.md to find appropriate components
 4. **Start with basic structure** — Create the screen shell with minimal content
 5. **Verify it renders** — Check the browser to confirm no errors
 6. **Add functionality incrementally** — Add one section at a time (e.g., header, then main content, then interactions)
@@ -79,31 +88,31 @@ This iterative approach prevents large debugging sessions and ensures each piece
 
 ### When building from Figma
 1. Use the Figma MCP to pull design specs from the provided URL
-2. Map Figma layers to Celeritas components
+2. Map Figma layers to Material UI components
 3. Extract colors, spacing, typography from the design
-4. Cross-reference against design principles
+4. Cross-reference against Material Design principles
 5. Generate component with correct props
 
 ### When reviewing UI
 1. Scan all components in the current project
-2. Check against design principles (spacing, colors, typography)
+2. Check against Material Design principles (spacing, colors, typography)
 3. Flag any inconsistencies or deviations
-4. Suggest corrections using Celeritas components
+4. Suggest corrections using Material UI components
 
 ## Guardrails
 
 You MUST follow these rules:
 
-- **Use Celeritas components** — Never write custom HTML for things that exist in the design system (buttons, avatars, badges, chips, modals, etc.)
-- **No hardcoded colors** — Use design tokens or Celeritas component variants
-- **Consistent spacing** — Follow the spacing system (8px increments when principles are defined)
+- **Use MUI components** — Never write custom HTML for things that exist in MUI (Button, Avatar, Badge, Chip, Dialog, etc.)
+- **No hardcoded colors** — Use theme tokens via sx prop (e.g., `bgcolor: 'primary.main'`, `color: 'text.secondary'`)
+- **Consistent spacing** — Use MUI's spacing system (e.g., `sx={{ p: 2, gap: 1 }}` = 16px padding, 8px gap)
 - **Accessibility** — Include proper aria labels, keyboard navigation support
 - **Component naming** — Use PascalCase, descriptive names (e.g., `StudentStatusCard`, `ClassScheduleHeader`)
 
 ## Project Structure
 
 ```
-design-workspace/
+product-studio-material/
 ├── CLAUDE.md                    # Your instructions (this file)
 ├── STUDIO_STATUS.md             # Project Studio development state
 │
@@ -112,8 +121,8 @@ design-workspace/
 │   └── TECHNICAL.md             # For builders/maintainers
 │
 ├── reference/                   # Design system docs (read-only)
-│   ├── CELERITAS_REFERENCE.md
-│   ├── DESIGN_PRINCIPLES.md
+│   ├── MATERIAL_UI_REFERENCE.md
+│   ├── MATERIAL_DESIGN_PRINCIPLES.md
 │   └── PROJECT_TEMPLATE.md
 │
 ├── projects/                    # Active projects
@@ -122,7 +131,7 @@ design-workspace/
 │       ├── components/          # Generated components
 │       └── CHANGELOG.md         # Build history
 │
-└── src/designs/                 # Legacy prototypes (separate)
+└── src/                         # Vite app for viewing prototypes
 ```
 
 ## Available Skills
@@ -144,33 +153,42 @@ Skills are invoked through **natural language**, not slash commands. Say things 
 
 ## Import Pattern
 
-When generating components that will use Celeritas, use this import pattern:
+When generating components that will use Material UI, use this import pattern:
 
 ```jsx
-// Celeritas components
+// MUI components
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Avatar from '@mui/material/Avatar';
+import Chip from '@mui/material/Chip';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+// ... other components
+
+// MUI icons
+import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+// ... other icons
+```
+
+**Alternative: Named imports**
+```jsx
 import {
+  Box,
   Button,
+  Card,
+  CardContent,
+  Typography,
   Avatar,
-  AvatarGroup,
-  Badge,
   Chip,
-  // ... other components
-} from 'design_system';
-
-// Celeritas icons
-import {
-  CheckmarkIcon,
-  CloseIcon,
-  ChevronDownIcon,
-  // ... other icons
-} from 'design_system';
-
-// Celeritas constants (if needed)
-import {
-  BUTTON_VARIANTS,
-  BUTTON_SIZES,
-  // ... other constants
-} from 'design_system';
+} from '@mui/material';
 ```
 
 ## Output Location
@@ -195,10 +213,10 @@ This ensures:
 
 **These prototypes are visual specs, not production code.** Engineers will:
 - View the running prototype to understand layout, spacing, and interactions
-- Reference the code to see which Celeritas components and props were used
+- Reference the code to see which MUI components and props were used
 - Build their own production implementation based on the prototype
 
-The value is that prototypes use *real* Celeritas components, so engineers know exactly what's achievable — no "design vs. reality" gap.
+The value is that prototypes use *real* Material UI components, so engineers know exactly what's achievable — no "design vs. reality" gap.
 
 ---
 
@@ -315,15 +333,3 @@ When the user says "end test", "finish test", "generate test report", or the wor
 ### Turning Off Test Mode
 
 When Project Studio is ready for general use, remove or update this section to disable test mode by default.
-
----
-
-## Legacy Prototypes
-
-Previous experiments live in `src/designs/` and are accessible via the gallery:
-
-- `case-justifications/` — Alert Settings prototype
-- `presentation/` — Rob presentation
-- `playwright/` — Student/Class card experiments
-
-These are separate from the new Project Studio workflow.

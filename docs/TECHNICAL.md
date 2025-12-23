@@ -1,4 +1,4 @@
-# Project Studio — Technical Documentation
+# Project Studio (Material Design Edition) — Technical Documentation
 
 Technical reference for engineers and maintainers of Project Studio.
 
@@ -6,14 +6,14 @@ Technical reference for engineers and maintainers of Project Studio.
 
 ## Overview
 
-Project Studio is a Claude Code workspace configured to build UI prototypes using the Celeritas design system. It uses **domain memory patterns** to maintain context across Claude sessions, solving the "amnesiac agent" problem where LLMs forget state between conversations.
+Project Studio is a Claude Code workspace configured to build UI prototypes using Material Design and Material UI (MUI). It uses **domain memory patterns** to maintain context across Claude sessions, solving the "amnesiac agent" problem where LLMs forget state between conversations.
 
 ### Core Concept
 
 ```
 User describes UI → Claude builds prototype → Engineers reference prototype
                          ↓
-              Uses real Celeritas components
+              Uses real Material UI components
                          ↓
               No "design vs reality" gap
 ```
@@ -25,7 +25,7 @@ User describes UI → Claude builds prototype → Engineers reference prototype
 ### Directory Structure
 
 ```
-design-workspace/
+product-studio-material/
 ├── CLAUDE.md                 # Claude's behavior configuration
 ├── STUDIO_STATUS.md          # Development state (meta-level domain memory)
 │
@@ -42,8 +42,8 @@ design-workspace/
 │           └── SKILL.md
 │
 ├── reference/                # Read-only design system documentation
-│   ├── CELERITAS_REFERENCE.md
-│   ├── DESIGN_PRINCIPLES.md
+│   ├── MATERIAL_UI_REFERENCE.md
+│   ├── MATERIAL_DESIGN_PRINCIPLES.md
 │   └── PROJECT_TEMPLATE.md
 │
 ├── projects/                 # User-created prototype projects
@@ -58,8 +58,7 @@ design-workspace/
 │
 └── src/                      # Vite app for viewing prototypes
     ├── main.jsx
-    ├── App.jsx
-    └── designs/              # Legacy prototypes (pre-Project Studio)
+    └── App.jsx
 ```
 
 ---
@@ -91,14 +90,14 @@ Persistent markdown files that Claude reads at session start and updates during 
 | Screen | Status | Notes |
 |--------|--------|-------|
 | Student List | ✅ Done | Table with filters |
-| Student Detail | 🔄 In Progress | Modal working, needs form |
+| Student Detail | 🔄 In Progress | Dialog working, needs form |
 | Settings | ⏳ Pending | |
 
 ## Progress Log
 ### 2024-12-23
 - Built StudentList, verified rendering
-- Started StudentDetail modal
-- Hit issue with Modal display, fixed with version={2}
+- Started StudentDetail dialog
+- Using MUI Dialog with DialogTitle, DialogContent, DialogActions
 ```
 
 ### Session Lifecycle
@@ -124,9 +123,9 @@ Persistent markdown files that Claude reads at session start and updates during 
 Instructions that configure Claude's behavior. Contains:
 
 - **Role definition**: "UI prototyping assistant"
-- **Critical requirements**: React 18, no Tailwind
+- **Critical requirements**: React 18, no Tailwind, use MUI
 - **Workflow steps**: Iterative building process
-- **Guardrails**: Use Celeritas, no hardcoded colors, etc.
+- **Guardrails**: Use MUI components, no hardcoded colors, etc.
 - **Skills reference**: How to invoke each skill
 
 Claude reads this automatically at conversation start.
@@ -158,16 +157,16 @@ Claude: ...
 
 **Important**: Skills are model-invoked based on user intent matching the description. They are NOT slash commands.
 
-### reference/CELERITAS_REFERENCE.md
+### reference/MATERIAL_UI_REFERENCE.md
 
-Quick reference for Celeritas component APIs. Contains:
+Quick reference for Material UI component APIs. Contains:
 
 - Component names and import paths
 - Available props and variants
 - Usage examples
 - Icon list
 
-This is read-only — don't modify. Update if design system changes.
+This is read-only — don't modify. Update if MUI version changes significantly.
 
 ### reference/PROJECT_TEMPLATE.md
 
@@ -187,13 +186,11 @@ Template used when creating new projects. Defines the structure of PROJECT.md fi
 
 ### Why React 18 (Not 19)
 
-Celeritas has peer dependencies requiring React 18. React 19 causes issues:
-- Modal components may not render
-- Subtle prop handling differences
+Material UI v6 works best with React 18. React 19 may cause issues with some component behaviors.
 
 ### Why No Tailwind
 
-Lightspeed engineering doesn't use Tailwind. Prototypes should reflect production constraints so there's no surprise during implementation.
+This version uses MUI's `sx` prop for styling, which is the idiomatic approach for Material UI. Mixing Tailwind with MUI creates inconsistency.
 
 ### Why Skills Instead of Long Prompts
 
@@ -216,36 +213,45 @@ Lightspeed engineering doesn't use Tailwind. Prototypes should reflect productio
 ### Design System Installation
 
 ```bash
-npm install design-system@github:Lightspeed-Systems/design_system --legacy-peer-deps
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material @fontsource/roboto
 ```
 
 ### Required Configuration
 
-**vite.config.js** — Alias for imports:
+**src/main.jsx** — ThemeProvider setup:
 ```javascript
-export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      'design_system': 'design-system',
-    },
-  },
-})
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import '@fontsource/roboto/300.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
+
+const theme = createTheme({})
+
+<ThemeProvider theme={theme}>
+  <CssBaseline />
+  <App />
+</ThemeProvider>
 ```
 
-**src/main.jsx** — CSS import (must be before other CSS):
-```javascript
-import 'design-system/dist/main.css'
-import './index.css'
-```
+### Dialog Components
 
-### Modal Components
-
-Modals require `version={2}` prop:
+MUI Dialogs follow this pattern:
 ```jsx
-<Modal version={2} open={isOpen} setOpen={setIsOpen} heading="Title">
-  Content
-</Modal>
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+
+<Dialog open={open} onClose={handleClose}>
+  <DialogTitle>Title</DialogTitle>
+  <DialogContent>Content</DialogContent>
+  <DialogActions>
+    <Button onClick={handleClose}>Cancel</Button>
+    <Button onClick={handleConfirm} variant="contained">Confirm</Button>
+  </DialogActions>
+</Dialog>
 ```
 
 ---
@@ -280,11 +286,11 @@ Edit `reference/PROJECT_TEMPLATE.md`. Changes apply to new projects only.
 
 ## Troubleshooting
 
-### Modal Not Rendering
+### Dialog Not Showing
 
-1. Check `src/main.jsx` imports `design-system/dist/main.css`
-2. Check Modal has `version={2}` prop
-3. Check React version is 18.x (not 19)
+1. Check the `open` prop is controlled by state
+2. Ensure `onClose` handler sets state to false
+3. Make sure Dialog is rendered (not conditionally omitted)
 
 ### Skill Not Triggering
 
@@ -294,14 +300,28 @@ Skills are model-invoked, not slash commands. Try:
 
 ### Component Import Errors
 
-Check vite.config.js has the alias:
+Make sure you're importing from the correct package:
 ```javascript
-alias: { 'design_system': 'design-system' }
+// Correct
+import Button from '@mui/material/Button';
+
+// Also correct
+import { Button } from '@mui/material';
+
+// Wrong (old package)
+import Button from '@material-ui/core/Button';
 ```
 
-### Peer Dependency Warnings
+### Styling Issues
 
-Use `--legacy-peer-deps` flag when installing packages.
+Use the `sx` prop for MUI-idiomatic styling:
+```jsx
+// Correct
+<Box sx={{ p: 2, bgcolor: 'primary.main' }} />
+
+// Avoid
+<Box style={{ padding: 16, backgroundColor: 'blue' }} />
+```
 
 ---
 
