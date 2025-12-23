@@ -1,61 +1,63 @@
 import React from 'react';
-import { Modal, BookOpenIcon, BellSnoozeIcon, CogIcon } from 'design_system';
+import {
+  Modal,
+  BookOpenIcon,
+  BellSnoozeIcon,
+  CogIcon,
+} from 'design_system';
 
-const TEMPLATES = [
+const templates = [
   {
-    id: 'homework',
-    name: 'Focus / Homework Time',
-    description: 'Block distracting sites during study hours',
+    id: 'focus',
+    name: 'Focus Time',
+    description: 'Block distracting sites during homework or study time',
     icon: BookOpenIcon,
-    color: '#0d9488', // teal
     defaults: {
-      name: 'Homework Time',
-      days: [1, 2, 3, 4, 5], // Mon-Fri
+      name: 'Focus Time',
+      days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
       startTime: '15:00',
       endTime: '18:00',
-      blockType: 'categories',
-      categories: ['games', 'social_media', 'entertainment'],
+      blockingType: 'categories',
+      categories: ['Games', 'Social Media', 'Entertainment'],
     },
   },
   {
     id: 'bedtime',
     name: 'Bedtime',
-    description: 'Pause internet access overnight',
+    description: 'Pause internet access during sleeping hours',
     icon: BellSnoozeIcon,
-    color: '#6366f1', // indigo
     defaults: {
       name: 'Bedtime',
-      days: [0, 1, 2, 3, 4, 5, 6], // Every day
+      days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu'],
       startTime: '21:00',
       endTime: '07:00',
-      blockType: 'everything',
-      categories: [],
+      blockingType: 'full',
+      isOvernight: true,
     },
   },
   {
     id: 'custom',
-    name: 'Custom Schedule',
-    description: 'Start from scratch with your own settings',
+    name: 'Custom',
+    description: 'Build your own schedule from scratch',
     icon: CogIcon,
-    color: '#6b7280', // gray
     defaults: {
       name: '',
       days: [],
-      startTime: '',
-      endTime: '',
-      blockType: 'categories',
+      startTime: '09:00',
+      endTime: '17:00',
+      blockingType: 'categories',
       categories: [],
     },
   },
 ];
 
-const TemplateModal = ({ open, onClose, onSelectTemplate }) => {
+const TemplateModal = ({ open, onClose, onSelect }) => {
   return (
     <Modal
       version={2}
       open={open}
       setOpen={onClose}
-      heading="Choose a template"
+      heading="Choose a Template"
       type="dialog"
     >
       <div style={{ padding: '8px 0' }}>
@@ -64,7 +66,7 @@ const TemplateModal = ({ open, onClose, onSelectTemplate }) => {
           color: '#666',
           margin: '0 0 24px 0',
         }}>
-          Start with a template or create your own custom schedule
+          Start with a template or create a custom schedule
         </p>
 
         <div style={{
@@ -72,75 +74,61 @@ const TemplateModal = ({ open, onClose, onSelectTemplate }) => {
           flexDirection: 'column',
           gap: '12px',
         }}>
-          {TEMPLATES.map((template) => {
+          {templates.map((template) => {
             const Icon = template.icon;
             return (
               <button
                 key={template.id}
-                onClick={() => onSelectTemplate(template)}
+                onClick={() => onSelect(template)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '16px',
                   padding: '16px',
-                  backgroundColor: '#fff',
-                  border: '1px solid #e5e7eb',
+                  border: '1px solid #e0e0e0',
                   borderRadius: '8px',
+                  backgroundColor: '#fff',
                   cursor: 'pointer',
                   textAlign: 'left',
-                  transition: 'all 0.15s ease',
+                  transition: 'border-color 0.15s, background-color 0.15s',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = template.color;
-                  e.currentTarget.style.backgroundColor = '#fafafa';
+                  e.currentTarget.style.borderColor = '#0284c7';
+                  e.currentTarget.style.backgroundColor = '#f0f9ff';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = '#e5e7eb';
+                  e.currentTarget.style.borderColor = '#e0e0e0';
                   e.currentTarget.style.backgroundColor = '#fff';
                 }}
               >
-                {/* Icon */}
                 <div style={{
                   width: '48px',
                   height: '48px',
-                  borderRadius: '12px',
-                  backgroundColor: `${template.color}15`,
+                  borderRadius: '8px',
+                  backgroundColor: '#e0f2fe',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  color: '#0284c7',
                   flexShrink: 0,
                 }}>
-                  <Icon style={{
-                    width: '24px',
-                    height: '24px',
-                    color: template.color,
-                  }} />
+                  <Icon />
                 </div>
-
-                {/* Text */}
-                <div style={{ flex: 1 }}>
+                <div>
                   <div style={{
-                    fontSize: '16px',
                     fontWeight: 500,
+                    fontSize: '16px',
                     color: '#1a1a1a',
-                    marginBottom: '4px',
                   }}>
                     {template.name}
                   </div>
                   <div style={{
                     fontSize: '14px',
                     color: '#666',
+                    marginTop: '4px',
                   }}>
                     {template.description}
                   </div>
-                </div>
-
-                {/* Arrow */}
-                <div style={{
-                  color: '#9ca3af',
-                  fontSize: '20px',
-                }}>
-                  →
                 </div>
               </button>
             );
@@ -152,3 +140,4 @@ const TemplateModal = ({ open, onClose, onSelectTemplate }) => {
 };
 
 export default TemplateModal;
+export { templates };

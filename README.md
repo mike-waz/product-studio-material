@@ -22,8 +22,7 @@ We use a **layered context system** that combines upfront structure with iterati
 ┌─────────────────────────────────────────────────────────────┐
 │  FOUNDATION LAYER (Set once, always present)                │
 │  - Design system reference (Celeritas)                      │
-│  - Design principles (spacing, color, typography)           │
-│  - UI patterns (real Lightspeed patterns)                   │
+│  - Design principles (spacing, color, typography, patterns) │
 └─────────────────────────────────────────────────────────────┘
                             ↓
 ┌─────────────────────────────────────────────────────────────┐
@@ -57,48 +56,45 @@ We use a **layered context system** that combines upfront structure with iterati
 | Claude Code Feature    | How It Serves This Workflow                              |
 | :--------------------- | :------------------------------------------------------- |
 | **CLAUDE.md**          | Foundation instructions, auto-loaded for every session   |
-| **MD files (context)** | Design system reference, principles, patterns            |
-| **Skills**             | Reusable workflows (create component, review UI, etc.)   |
-| **Slash commands**     | Quick actions like `/new-project`, `/from-figma`         |
-| **Subagents**          | Specialized workers (design review, accessibility check) |
-| **MCP servers**        | Connect to Figma, Storybook, or other tools              |
+| **MD files (context)** | Design system reference, principles                      |
+| **Skills**             | Natural language triggers (create project, review UI)    |
+| **MCP servers**        | Connect to Figma, Playwright for visual verification     |
 
 ---
 
 ## Directory Structure
 
 ```
-design-workspace/
+product-studio/
 ├── CLAUDE.md                    # Foundation: Auto-loaded instructions
+├── STUDIO_STATUS.md             # Development state and progress log
 │
 ├── .claude/
 │   └── skills/
-│       ├── new-project.md       # Skill: Create new project via Q&A
-│       ├── create-component.md  # Skill: Create component from description
-│       ├── from-figma.md        # Skill: Build from Figma selection
-│       └── review-ui.md         # Skill: Check against design principles
+│       ├── new-project/         # Skill: Create new project via Q&A
+│       ├── create-component/    # Skill: Create component from description
+│       ├── from-figma/          # Skill: Build from Figma selection
+│       └── review-ui/           # Skill: Check against design principles
 │
 ├── reference/
 │   ├── CELERITAS_REFERENCE.md   # Component API quick reference
-│   ├── DESIGN_PRINCIPLES.md     # Spacing, color, typography tokens
-│   ├── UI_PATTERNS.md           # Real Lightspeed UI patterns
-│   ├── PROJECT_TEMPLATE.md      # Template for new projects
-│   └── examples/                # Screenshot references
-│       ├── filter-policies.png
-│       ├── filter-policies-details.png
-│       ├── filter-modal-access-check.png
-│       ├── signal-apps.png
-│       └── signal-internet-filter.png
+│   ├── DESIGN_PRINCIPLES.md     # Spacing, color, typography, patterns
+│   └── PROJECT_TEMPLATE.md      # Template for new projects
 │
 ├── docs/
-│   └── PROJECT_STUDIO.md        # This file - system documentation
+│   ├── USER_GUIDE.md            # For PMs and designers
+│   ├── TECHNICAL.md             # For builders/maintainers
+│   └── CHEATSHEET.md            # Quick reference phrases
 │
 ├── projects/                    # Individual project workspaces
 │   └── [project-name]/
 │       ├── PROJECT.md           # Project context (PRD-lite)
-│       └── components/          # Generated components
+│       ├── components/          # Generated components
+│       └── CHANGELOG.md         # Build history
 │
-└── src/designs/                 # Legacy prototypes (separate from Project Studio)
+├── tests/                       # Test reports and comparisons
+│
+└── src/designs/                 # Legacy prototypes
 ```
 
 ---
@@ -108,7 +104,7 @@ design-workspace/
 ### Starting a New Project
 
 ```
-PM: /new-project "Teacher Dashboard Redesign"
+PM: "Create a new project called Teacher Dashboard Redesign"
 
 → Claude asks clarifying questions:
   - What problem does this solve?
@@ -116,10 +112,12 @@ PM: /new-project "Teacher Dashboard Redesign"
   - What are the key screens/actions?
   - Any existing patterns to follow?
 → Claude creates projects/teacher-dashboard/PROJECT.md with answers
-→ Project is ready for iterative building
+→ Claude asks: "What would you like me to build first?"
+→ PM provides detailed description
+→ Building begins
 ```
 
-### Building Iteratively (with context)
+### Building Iteratively
 
 ```
 PM: "Create a class card that shows the class name,
@@ -128,45 +126,20 @@ PM: "Create a class card that shows the class name,
 → Claude reads CLAUDE.md (foundation)
 → Claude reads PROJECT.md (project context)
 → Claude checks CELERITAS_REFERENCE.md for components
-→ Claude checks UI_PATTERNS.md for Lightspeed conventions
+→ Claude checks DESIGN_PRINCIPLES.md for conventions
 → Generates ClassCard.jsx using Avatar, Label, etc.
-→ Updates PROJECT.md "Components Created" section
-```
-
-### Building from Figma
-
-```
-PM: /from-figma https://figma.com/design/.../node-id=123:456
-
-→ Claude uses Figma MCP to pull design specs
-→ Maps Figma layers to Celeritas components
-→ Cross-references DESIGN_PRINCIPLES.md for tokens
-→ Generates component with correct props and spacing
 → Updates PROJECT.md
 ```
 
 ### Reviewing for Consistency
 
 ```
-PM: /review-ui
+PM: "Review my components for design consistency"
 
 → Claude scans all components in project
 → Checks against design principles
 → Flags inconsistencies (spacing, colors, patterns)
 → Suggests improvements using Celeritas components
-→ Ensures components work together cohesively
-```
-
-### Visual Verification with Playwright
-
-```
-After making changes:
-
-→ Claude navigates to localhost:5173
-→ Takes snapshot of component
-→ Compares against reference screenshots
-→ Identifies discrepancies
-→ Makes corrections and re-verifies
 ```
 
 ---
@@ -200,54 +173,14 @@ After making changes:
 Quick lookup for Celeritas component APIs - props, variants, sizes, colors.
 
 ### DESIGN_PRINCIPLES.md
-Design tokens extracted from Celeritas source:
+Design tokens and conventions:
 - Spacing scale (4px grid)
 - Typography (Roboto, size scale, weights)
 - Colors (primary teal, greys, semantic colors)
 - Border radius, shadows, breakpoints
-
-### UI_PATTERNS.md
-Real patterns extracted from Filter and Signal product screenshots:
-- Page structure and layout
-- Navigation (left nav, breadcrumbs, tabs)
-- Tables/lists with standard columns
-- Empty states
-- Forms and controls
-- Filter bar patterns
-- Status indicators (Label vs Chip)
-- Avatar conventions (initials only)
-- Modal structure
-
----
-
-## Implementation Status
-
-### Phase 1: Foundation ✅
-- [x] Create CELERITAS_REFERENCE.md
-- [x] Create CLAUDE.md with core instructions
-- [x] Create DESIGN_PRINCIPLES.md (tokens from Celeritas)
-- [x] Create PROJECT_TEMPLATE.md
-
-### Phase 2: Skills ✅
-- [x] Create `new-project` skill
-- [x] Create `create-component` skill
-- [x] Create `from-figma` skill
-- [x] Create `review-ui` skill
-
-### Phase 3: Real-World Patterns ✅
-- [x] Collect production UI screenshots (Filter, Signal)
-- [x] Analyze patterns through Q&A
-- [x] Create UI_PATTERNS.md with Lightspeed conventions
-- [ ] Get production code examples (pending repo access)
-
-### Phase 4: Testing & Refinement 🔄
-- [ ] Update /new-project with clarifying questions
-- [ ] Test with sample project
-- [ ] Iterate based on feedback
-- [ ] Document lessons learned
-
-### Future Consideration
-- [ ] MUI + theming approach as alternative to Celeritas
+- Page patterns (headers, empty states, tables)
+- Visual weight guidelines
+- Icon conventions (horizontal more-actions only)
 
 ---
 
@@ -260,22 +193,6 @@ Real patterns extracted from Filter and Signal product screenshots:
 
 ---
 
-## Changelog
+## Status
 
-### 2024-12-22
-- Created UI_PATTERNS.md from analysis of 5 production screenshots
-- Learned key Lightspeed conventions:
-  - Avatars use initials only (no photos)
-  - Label component (non-interactive) vs Chip (interactive)
-  - Toggle colors: grey=off, teal=on, red=blocked
-  - Standard filter bar pattern
-  - Empty state pattern
-- Identified patterns NOT in design system (KPI cards, charts)
-- Discussed alternative approach: MUI + theming (deferred for now)
-- Reviewed Ryan Carson's 3-file system; adopting clarifying questions approach
-
-### Earlier
-- Set up initial workspace structure
-- Created reference documents from Celeritas source
-- Created 4 skills for the workflow
-- Established Playwright integration for visual verification
+See [STUDIO_STATUS.md](STUDIO_STATUS.md) for current development state, known issues, and test history.

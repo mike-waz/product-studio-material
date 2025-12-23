@@ -139,9 +139,9 @@ Use `reference/PROJECT_TEMPLATE.md` as the base structure. Populate it with the 
 - Key screens planned: [List from answers]
 ```
 
-### Step 6: Confirm and Summarize
+### Step 6: Confirm and Ask for Build Prompt
 
-After creating files, provide a summary:
+After creating files, provide a summary and **explicitly ask for the build prompt**:
 
 ```
 Project "[Project Name]" is ready!
@@ -155,11 +155,22 @@ Key screens to build:
 - [Screen 1]
 - [Screen 2]
 - ...
-
-Ready to start building? Try:
-- "Create a [component name]"
-- Describe what you want to see
 ```
+
+**CRITICAL: Now ask for the build prompt before doing anything else:**
+
+```
+What would you like me to build first?
+
+Please describe the screen or component in detail:
+- What should it show?
+- What actions can the user take?
+- Any specific requirements or behaviors?
+
+You can also attach a sketch, wireframe, or screenshot of an existing feature if that helps.
+```
+
+**DO NOT start building until the user provides this prompt.** The PM's detailed description is essential context — never assume or invent requirements.
 
 ## Example
 
@@ -192,8 +203,30 @@ The PROJECT.md Screens Backlog would contain:
 
 And Progress Log would end with:
 ```markdown
-- **Next:** List/table view (start with the main screen)
+- **Next:** Waiting for PM to describe what to build
 ```
+
+Claude then asks:
+```
+What would you like me to build first?
+
+Please describe the screen or component in detail:
+- What should it show?
+- What actions can the user take?
+- Any specific requirements or behaviors?
+
+You can also attach a sketch, wireframe, or screenshot of an existing feature if that helps.
+```
+
+User provides detailed prompt:
+```
+I need a way for admins to manage filtering policies. They should see a list
+of all policies with name, status, and how many users are affected. They can
+click to edit, toggle on/off, or delete. There should be a way to create new
+policies too.
+```
+
+NOW Claude can start building, with the PM's requirements as the guide.
 
 ## Notes
 
@@ -201,3 +234,4 @@ And Progress Log would end with:
 - If user provides detailed context upfront, you can skip redundant questions
 - The goal is lightweight context, not a full PRD
 - Keep the conversation moving - don't over-ask
+- **CRITICAL: Always ask for the build prompt before starting to build. Never assume what to create.**

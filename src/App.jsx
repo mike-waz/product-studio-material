@@ -7,8 +7,8 @@ import Presentation from './designs/presentation/Presentation'
 import Playwright from './designs/playwright/Playwright'
 import PasswordGate from './components/PasswordGate'
 
-// Project: Simple Screen Test-v3
-import ScheduleList from '../projects/simple-screen-test-v3/components/ScheduleList'
+// Project: Simple Screen Test v5
+import ScheduleListV5 from '../projects/simple-screen-test-v5/components/ScheduleList'
 
 function App() {
   const [currentDesign, setCurrentDesign] = useState(null)
@@ -18,7 +18,7 @@ function App() {
     { id: 'alert-settings', name: 'Alert Settings', component: AlertSettings },
     { id: 'presentation', name: 'Presentation', component: Presentation },
     { id: 'playwright', name: 'Student Card (Playwright)', component: Playwright },
-    { id: 'schedule-list', name: 'Schedule List (v3)', component: ScheduleList },
+    { id: 'schedule-list-v5', name: 'Schedule List (v5)', component: ScheduleListV5 },
     // Add more designs here...
   ]
 

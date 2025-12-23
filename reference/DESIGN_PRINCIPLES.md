@@ -134,6 +134,67 @@ font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 5. **Danger buttons**: Use `--c-danger` (#d32f2f)
 6. **Never hardcode colors** — Always use CSS variables or Celeritas variants
 
+### Primary Color: Teal, Not Blue
+
+**CRITICAL**: Lightspeed's primary brand color is **teal** (`--c-teal700` / #007fa5), NOT blue.
+
+- ✅ Use teal for: primary buttons, active states, links, selected items, toggle switches
+- ❌ Never use blue (#0288d1 or similar) as a primary action color
+- Blue is only used as part of the extended palette for specific data visualization or categorization
+
+When you see a blue button or blue primary action, it's wrong — change it to teal.
+
+---
+
+## Icons & Action Buttons
+
+### More Actions Menu
+
+**Always use the horizontal ellipsis (⋯)**, never the vertical kebab (⋮).
+
+- ✅ Horizontal: `MoreHorizIcon` or `⋯` — Lightspeed standard
+- ❌ Vertical: `MoreVertIcon` or `⋮` — Not used at Lightspeed
+
+The horizontal more-actions icon is the company convention across all products.
+
+### Action Button Placement
+
+- Keep action buttons (edit, delete, more actions) grouped together
+- Maintain adequate spacing between toggles and action buttons (minimum 16px)
+- More actions menus should be subtle — don't make them visually prominent
+
+---
+
+## Visual Weight Guidelines
+
+### Prefer Lighter Alternatives
+
+When displaying metadata, status, or secondary information, prefer lighter visual treatments:
+
+| Heavy (Avoid) | Light (Prefer) | When to Use Light |
+|---------------|----------------|-------------------|
+| `<Chip>` | Plain text with icon | Schedule type, category labels |
+| `<Callout>` | Inline warning text | Non-blocking warnings, hints |
+| Separate status banner | Badge on individual items | "Active" or "Enabled" states |
+| Large icon buttons | Small icon buttons | Action menus, secondary actions |
+
+### When to Use Heavy Components
+
+Heavy components like Chips and Callouts are appropriate for:
+- **Chips**: Filtering, tags that users interact with, removable selections
+- **Callouts**: Critical warnings that require user attention, blocking issues, important announcements
+
+### Active/Enabled State Pattern
+
+Show active or enabled states **on individual items**, not in separate summary widgets:
+
+- ✅ Highlight the active card with a subtle left border or background tint
+- ✅ Show a small "Active" badge on the item itself
+- ❌ Don't add a separate "Active Schedules" banner at the top of a list
+- ❌ Don't create widgets that duplicate information visible in the list
+
+The user is already looking at the list — don't make them look somewhere else to understand status.
+
 ---
 
 ## Border Radius
@@ -211,6 +272,53 @@ font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
 - All form inputs require labels
 - Icon-only buttons require aria-label
 - Images require alt text
+
+---
+
+## Page Patterns
+
+### Page Header
+Standard header structure for content pages:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ Page Title                              [Secondary] [Primary]│
+│ Optional description in grey text                           │
+└─────────────────────────────────────────────────────────────┘
+```
+
+- **Title**: Large, bold text
+- **Description**: Optional grey text beneath title
+- **Primary action**: Right-aligned button (e.g., "Create policy")
+- **Secondary actions**: Text links with icons, left of primary
+
+### Empty States
+When there's no data to display:
+
+1. Grey contextual icon (e.g., search icon for no results)
+2. Simple phrase: "No data to display"
+3. Helpful suggestion: "Try selecting different criteria or check back once data has been recorded."
+
+### Data Tables
+Standard table structure:
+
+| Column | Purpose |
+|--------|---------|
+| # | Row number (1, 2, 3...) |
+| Name | Teal linked text, clickable |
+| Description | Grey secondary text |
+| Status | Label component (green=assigned, grey=unassigned) |
+| Date | Standard date format |
+| Actions | Overflow menu (⋯) |
+
+### Label vs Chip
+
+| Component | Use When |
+|-----------|----------|
+| **Label** | Displaying status (non-interactive): "Assigned", "Blocked", "Active" |
+| **Chip** | User can interact: filtering, removable tags, selectable options |
+
+Labels are for reading. Chips are for clicking.
 
 ---
 

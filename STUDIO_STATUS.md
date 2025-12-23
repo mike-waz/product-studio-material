@@ -20,6 +20,7 @@
 | Technical documentation | ✅ Done | docs/TECHNICAL.md |
 | Cheatsheet | ✅ Done | docs/CHEATSHEET.md |
 | Test Mode | ✅ Done | Default ON, generates reports to tests/, Claude + tester feedback |
+| Competitive comparison testing | ✅ Done | tests/comparisons/ with template for structured analysis |
 
 ## Known Issues
 
@@ -28,6 +29,10 @@
 | Skills aren't slash commands | 12/23 | Documented | They're natural language triggers |
 | Modal requires `version={2}` | 12/23 | Documented | Added to CLAUDE.md |
 | React 19 incompatible | 12/23 | Fixed | Downgraded to React 18 |
+| Using blue instead of teal | 12/23 | Fixed | Documented in DESIGN_PRINCIPLES.md |
+| Vertical more-actions icon used | 12/23 | Fixed | Documented in DESIGN_PRINCIPLES.md |
+| Components have excessive visual weight | 12/23 | Fixed | Added Visual Weight Guidelines to DESIGN_PRINCIPLES.md |
+| Toggle shows "On" for disabled items | 12/23 | Not a bug | Tester confirmed toggle was working correctly |
 
 ## Architecture Decisions
 
@@ -47,13 +52,38 @@
 |------|------|--------|-------|
 | Simple Screen Test v1 | 12/22 | ❌ Failed | Modal didn't render |
 | Simple Screen Test v2 | 12/23 | ✅ Passed | Fixed with CSS import + version={2} |
-| Test v3 | — | ⏳ Pending | Fresh session test after all updates |
+| Competitive Comparison: Web Browsing Scheduler | 12/22 | ✅ Passed | Product Studio won vs Figma Make, Claude.app |
+| Simple Screen Test v5 | 12/23 | ⚠️ Passed with issues | Good layout/spacing, but design accuracy issues (colors, component weight, conventions) |
+
+## Comparison Test Results
+
+**Test:** Web Browsing Schedule Manager (12/22/2024)
+**Winner:** Product Studio
+
+| Tool | Result |
+|------|--------|
+| Figma Make (Sonnet) | Basic wireframe, no design system |
+| Figma Make (Gemini 3) | Slightly better, still generic |
+| Claude.app (Opus 4.5) | Nice looking but generic components |
+| **Product Studio** | **Production-quality, uses Celeritas** |
+
+**Key insight:** Same model (Opus 4.5), but Product Studio's design system context is the differentiator.
+
+**Issues identified:**
+- Kebab menu button too large/prominent
+- Time picker UX needs improvement
+- Some actions non-functional in prototype
+
+Full report: `tests/comparisons/web-browsing-schedule-manager/COMPARISON.md`
 
 ## Next Steps
 
-- [ ] Run Test v3 with fresh session to validate full workflow
+- [ ] Address kebab menu sizing issue
+- [ ] Improve time picker pattern documentation
 - [ ] Test from-figma skill with real Figma URL
 - [ ] Test review-ui skill on existing components
+- [ ] Explore visual input support: allow PM to provide hand-drawn sketch or wireflow diagram alongside prompt
+- [ ] Explore screenshot-based iteration: allow PM to provide screenshot of existing feature as starting point for redesign
 
 ## Testing Approach
 
@@ -74,6 +104,45 @@
 ---
 
 ## Progress Log
+
+### 2024-12-23 (Session 5 continued)
+- Workspace optimization and cleanup:
+  - Merged unique patterns from UI_PATTERNS.md into DESIGN_PRINCIPLES.md
+  - Deleted UI_PATTERNS.md (redundant after merge)
+  - Deleted reference/examples/ folder (5 screenshots, no longer needed)
+  - Deleted reference/Tutorial: 3 Files System.txt (50KB downloaded article)
+  - Updated README.md — removed stale content, updated directory structure
+  - Rewrote docs/PROJECT_STUDIO.md — focused on technical/maintenance info
+- Reference folder reduced from 3.9MB to ~30KB
+- **Next:** Run test v6 in fresh session to validate the design principles fixes
+
+### 2024-12-23 (Session 5)
+- Updated DESIGN_PRINCIPLES.md with fixes from test v5:
+  - Added "Primary Color: Teal, Not Blue" section
+  - Added "Icons & Action Buttons" section (horizontal more-actions only)
+  - Added "Visual Weight Guidelines" section (prefer lighter alternatives)
+  - Added "Active/Enabled State Pattern" guidance
+  - Added "Page Patterns" section (page header, empty states, data tables, Label vs Chip)
+- Updated Known Issues table — marked 3 issues as Fixed, 1 as Not a bug
+- **Next:** Workspace optimization
+
+### 2024-12-23 (Session 4)
+- Documented first competitive comparison test: Web Browsing Schedule Manager
+- Tested 4 tools: Figma Make (Sonnet), Figma Make (Gemini 3), Claude.app (Opus 4.5), Product Studio
+- Product Studio won across all categories
+- Key insight: Same model + design system context = production-quality output
+- Identified improvements: kebab menu sizing, time picker UX, functional prototypes
+- **Next:** Address identified issues, continue "training" Product Studio
+
+### 2024-12-23 (Session 3)
+- Set up GitHub repo (mike-waz/product-studio)
+- Updated README.md with Project Studio documentation
+- Created competitive comparison testing structure:
+  - tests/comparisons/ folder for organized test results
+  - tests/COMPARISON_TEMPLATE.md for standardized analysis
+  - Each test gets its own folder with COMPARISON.md + screenshots
+- Screenshots referenced via relative paths in markdown (Claude can view them)
+- **Next:** Run first comparison test using the template
 
 ### 2024-12-23 (Session 2 - continued, part 3)
 - Implemented Test Mode feature

@@ -177,6 +177,20 @@ import {
 
 Prototypes go in: `projects/[project-name]/components/`
 
+## Project Isolation
+
+**Each project is self-contained.** When working on a project:
+
+- **Only reference files within that project's folder** — Don't import from other projects
+- **Don't look at or copy from other projects** — Each project starts fresh based on the PM's prompt
+- **When adding to App.jsx**, only add imports for the current project — Don't modify imports for other projects
+- **If a previous project exists with similar functionality**, ignore it — Build based on the PM's new requirements, not old code
+
+This ensures:
+1. Each test/project is independent and reproducible
+2. PMs get fresh output based on their prompt, not recycled code
+3. No cross-contamination between projects
+
 ## Engineering Handoff
 
 **These prototypes are visual specs, not production code.** Engineers will:
