@@ -9,16 +9,14 @@ import Container from '@mui/material/Container'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
 // Import project components here as you create them
-// Example:
-// import MyComponent from '../projects/my-project/components/MyComponent'
+import NotificationCenterDemo from '../projects/notification-center/components/NotificationCenterDemo'
 
 function App() {
   const [currentDesign, setCurrentDesign] = useState(null)
 
   // Add new designs to this list
   const designs = [
-    // { id: 'example', name: 'Example Component', component: ExampleComponent },
-    // Add more designs here...
+    { id: 'notification-center', name: 'Notification Center', component: NotificationCenterDemo },
   ]
 
   const activeDesigns = designs.filter(d => d.component !== null)
